@@ -24,7 +24,7 @@ goto "$start"
 bitcoind -daemon
 sleep $timeout
 bitcoin-cli stop
-until timeout 10s tail -f /media/drive2/.bitcoin/debug.log | grep -m 1 "Shutdown: done"
+until timeout 600s tail -f /media/drive2/.bitcoin/debug.log | grep -m 1 "Shutdown: done"
   do
     sleep 2
   done
