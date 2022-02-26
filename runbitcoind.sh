@@ -21,16 +21,25 @@ goto "$start"
 
 : start
 
+#Start bitcoind
 bitcoind -daemon
+
+#Run until timout
 sleep $timeout
+
+#Stop bitcoind
 bitcoin-cli stop
-until timeout 10s tail -f /media/drive2/.bitcoin/debug.log | grep -m 1 "Shutdown: done"
+
+#Tries for ten minutes to see if exit is detected.
+until timeout 600s tail -f /media/drive2/.bitcoin/debug.log | grep -m 1 "Shutdown: done"
   do
     sleep 2
   done
 
+#Log again
 echo again
 
+#Loop to : start
 goto "start"
 
 echo bar
