@@ -3,7 +3,7 @@
 # Willtech ©2022
 
 # How often to restart in seconds
-timeout=3600
+timeout=43200
 
 # BAT / CMD goto function
 # Source: https://www.codegrepper.com/code-examples/shell/bash+jump+to
@@ -31,7 +31,7 @@ sleep $timeout
 bitcoin-cli stop
 
 #Tries for ten minutes to see if exit is detected.
-until timeout 600s tail -f /media/drive2/.bitcoin/debug.log | grep -m 1 "Shutdown: done"
+until timeout 1200s tail -f /media/drive2/.bitcoin/debug.log | grep -m 1 "Shutdown: done"
   do
     sleep 2
   done
